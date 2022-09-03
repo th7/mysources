@@ -2,5 +2,5 @@
 
 set -exuo pipefail
 
-zip ${GITHUB_REF_NAME}.xpi manifest.json content_script.js options/*
-gh release create $GITHUB_REF_NAME ${GITHUB_REF_NAME}.xpi
+zip mysources-${GITHUB_REF_NAME}.xpi manifest.json content_script.js options/*
+gh release create mysources-$GITHUB_REF_NAME mysources-${GITHUB_REF_NAME}.xpi
