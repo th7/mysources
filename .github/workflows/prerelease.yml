@@ -12,7 +12,7 @@ jobs:
     - env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        VERSIONED_FILE="prerelease-$(echo "${{ github.event.payload.head }}" | cut -c1-7)"
+        VERSIONED_FILE="prerelease-$(echo "${{ github.sha }}" | cut -c1-7)"
         echo $VERSIONED_FILE
         zip $VERSIONED_FILE manifest.json content_script.js options/*
         gh release create --prerelease create $VERSIONED_FILE $VERSIONED_FILE
