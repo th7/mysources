@@ -14,5 +14,5 @@ jobs:
       run: |
         VERSION="prerelease-$(echo "${{ github.sha }}" | cut -c1-7)"
         echo $VERSION
-        zip $VERSION.xpi manifest.json content_script.js options/*
-        gh release create --prerelease create $VERSION $VERSION.xpi
+        zip ${VERSION}.xpi manifest.json content_script.js options/*
+        gh release create --prerelease create $VERSION ${VERSION}.xpi
