@@ -1,0 +1,17 @@
+on: 
+  push: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+    - env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        VERSIONED_FILE="prerelease-$(echo "${{ github.event.head }}" | cut -c1-7)"
+        echo $VERSIONED_FILE
+        zip $VERSIONED_FILE manifest.json content_script.js options/*
+        gh release --prerelease create $VERSIONED_FILE $VERSIONED_FILE
