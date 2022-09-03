@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -exuo pipefail
 
 zip ${GITHUB_REF_NAME}.xpi manifest.json content_script.js options/*
 gh release create $GITHUB_REF_NAME ${GITHUB_REF_NAME}.xpi
