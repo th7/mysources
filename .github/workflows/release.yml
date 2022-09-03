@@ -12,8 +12,4 @@ jobs:
     - uses: actions/checkout@v3
     - env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        VERSION="$(echo ${{ github.ref }}" | rev | cut -d/ -f1 | rev)"
-        echo $VERSION
-        zip ${VERSION}.xpi manifest.json content_script.js options/*
-        gh release create $VERSION ${VERSION}.xpi
+      run: ./cmd/release
