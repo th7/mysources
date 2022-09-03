@@ -5,4 +5,4 @@ set -exuo pipefail
 VERSION="prerelease-$(echo $GITHUB_SHA | cut -c1-7)"
 echo $VERSION
 zip ${VERSION}.xpi manifest.json content_script.js options/*
-gh release create --prerelease create $VERSION ${VERSION}.xpi
+gh release create --prerelease $VERSION ${VERSION}.xpi
