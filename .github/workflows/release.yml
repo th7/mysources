@@ -13,7 +13,7 @@ jobs:
     - env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        VERSIONED_FILE="$(echo "${{ github.ref }}" | rev | cut -d/ -f1 | rev)"
-        echo $VERSIONED_FILE
-        zip $VERSIONED_FILE manifest.json content_script.js options/*
-        gh release create $VERSIONED_FILE $VERSIONED_FILE
+        VERSION="$(echo "${{ github.ref }}" | rev | cut -d/ -f1 | rev)"
+        echo $VERSION
+        zip $VERSION.xpi manifest.json content_script.js options/*
+        gh release create $VERSION $VERSION.xpi
