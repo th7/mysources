@@ -11,4 +11,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: zip mysources.xpi manifest.json content_script.json options/*
-    - run: gh release create $(echo "${{ github.event.ref }}" | rev | cut -d/ -f1) mysources.xpi
+    - env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: gh release create $(echo "${{ github.event.ref }}" | rev | cut -d/ -f1) mysources.xpi
