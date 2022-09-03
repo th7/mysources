@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "mysources",
+  "version": "1",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "unlimitedStorage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.dndbeyond.com/*"
+      ],
+      "js": [
+        "content_script.js"
+      ]
+    }
+  ],
+  "options_ui": {
+    "page": "options/index.html"
+  },
+  "browser_action": {
+    "default_popup": "options/index.html",
+    "default_title": "mysources"
+  }
+}
