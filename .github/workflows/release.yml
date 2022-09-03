@@ -9,5 +9,6 @@ jobs:
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v2
-    - uses: ncipollo/release-action@v1
+    - uses: actions/checkout@v3
+    - run: zip mysources.xpi manifest.json content_script.json options/*
+    - run: gh release create $(echo "${{ github.event.ref }}" | rev | cut -d/ -f1) mysources.xpi
