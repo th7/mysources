@@ -10,9 +10,10 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v3
-    - run: export VERSIONED_FILE="$(echo "${{ github.event.ref }}" | rev | cut -d/ -f1 | rev)"
-    - run: echo $VERSIONED_FILE
-    - run: zip $VERSIONED_FILE manifest.json content_script.js options/*
     - env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: gh release create $VERSIONED_FILE $VERSIONED_FILE
+      run: |
+        VERSIONED_FILE="$(echo "${{ github.event.ref }}" | rev | cut -d/ -f1 | rev)"
+        echo $VERSIONED_FILE
+        zip $VERSIONED_FILE manifest.json content_script.js options/*
+        gh release create $VERSIONED_FILE $VERSIONED_FILE
