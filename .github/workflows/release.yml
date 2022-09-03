@@ -10,7 +10,8 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v3
-    - run: zip mysources.xpi manifest.json content_script.js options/*
+    - run: export VERSIONED_FILE=$(echo "${{ github.event.ref }}" | rev | cut -d/ -f1 | rev)
+    - run: zip $VERSIONED_FILE manifest.json content_script.js options/*
     - env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: gh release create $(echo "${{ github.event.ref }}" | rev | cut -d/ -f1 | rev) mysources.xpi
+      run: gh release create $VERSIONED_FILE $VERSIONED_FILE
