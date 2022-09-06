@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "mysources",
-  "version": "1",
+  "version": "0.0.5",
   "permissions": [
     "activeTab",
     "storage",
