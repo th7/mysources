@@ -13,7 +13,7 @@
         "*://*.dndbeyond.com/*"
       ],
       "js": [
-        "content_script.js"
+        "mysources.js"
       ]
     }
   ],
